@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/playList/playList",
+    "pages/blog/blog",
+    "pages/profile/profile",
+    "pages/demo/demo"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#D81F08",
+    "navigationBarTitleText": "网易云",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#D81F08",
+    "list": [
+      {
+        "pagePath": "pages/playList/playList",
+        "text": "音乐",
+        "iconPath": "static/images/music.png",
+        "selectedIconPath": "static/images/music1.png"
+      },
+      {
+        "pagePath": "pages/blog/blog",
+        "text": "发现",
+        "iconPath": "static/images/blog.png",
+        "selectedIconPath": "static/images/blog1.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "text",
+        "iconPath": "static/images/profile.png",
+        "selectedIconPath": "static/images/profile1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
