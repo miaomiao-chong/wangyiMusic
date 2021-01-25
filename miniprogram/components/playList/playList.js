@@ -27,6 +27,13 @@ Component({
    */
 
   methods: {
+    goToMusiclist(){
+      wx.navigateTo({
+        url: '../../pages/musiclist/musiclist?playlistId='+this.properties.playlist.id,
+      })
+    },
+
+
     // 6位一下  6-8位 8位以上
     // 12345.444   1251232.12  123654789
     // 1 直接取整 

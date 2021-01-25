@@ -1,109 +1,69 @@
 // miniprogram/pages/demo/demo.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:['python','c','c++','java','go']
+    // list:['python','c','c++','java','go']
   },
-
+  //获取音乐信息
+  getMusicInfo(){
+    wx.cloud.callFunction({
+      name:'tcbRouter',
+      data:{
+        $url:'music'
+      }
+    }).then((res)=>{
+      console.log(res);
+    })
+  },
+  //获取电影信息
+  getMovieInfo(){
+    wx.cloud.callFunction({
+      name:'tcbRouter',
+      data:{
+        $url:'movie'
+      }
+    }).then((res)=>{
+      console.log(res);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */ 
+
   onLoad: function (options) {
-    // setTimeout(() => {
-    //   console.log(1);
-    //   setTimeout(() => {
-    //     console.log(2); 
-    //     setTimeout(() => {
-    //       console.log(3);
-    //     }, 3000);
-    //   }, 2000);
-    // }, 1000);
-    // new Promise((resolve,reject)=>{
-    //   setTimeout(() => {
-    //     console.log("1");
-    //     resolve()
-    //   }, 100);
-    // }).then(()=>{
-    //   setTimeout(() => {
-    //     console.log("2");
-    //   }, 2000);
-    // })
-  //  let p1=new Promise((resolve,reject)=>{
-  //     setTimeout(() => {
-  //       console.log("p1");
-  //       resolve("p1")
-  //     }, 2000);
-  //   })
-    
-  //  let p2=new Promise((resolve,reject)=>{
-  //     setTimeout(() => {
-  //       console.log("p2");
-  //       resolve("p2")
-  //     }, 1000);
-  //   })
-  //  let p3=new Promise((resolve,reject)=>{
-  //     setTimeout(() => {
-  //       console.log("p3");
-  //       resolve("p3")
-  //     }, 3000);
-  //   })
-  // //等三个promise任务都完成 再进行操作
-  // Promise.all([p1,p2,p3]).then((res)=>{
-  //   console.log("全部完成");
-  //   console.log(res);
-  // }).catch((err)=>{
-  //   console.log("失败");
-  // })
-
-  // Promise.race([p1,p2,p3]).then((res)=>{
-  //   console.log("完成");
-  //   console.log(res);
-  // }).catch((err)=>{
-  //   console.log("失败");
-  // })
-  // },
-  // change(){
-  //   let length=this.data.list.length
-  //   for(let i=0;i<3;i++){
-  //     let x=Math.floor(Math.random()*length)
-  //     let y=Math.floor(Math.random()*length)
-  //     let temp=this.data.list[x]
-  //     this.data.list[x]=this.data.list[y]
-  //     this.data.list[y]=temp
-  //   }
-   
-  //   this.setData({
-  //     list:this.data.list
-  //   })
-
-  //   this.foo()
-  //  } ,
-  //   async foo(){
-  //    await console.log("foo");
- 
+    wx.request({
+      url: 'https://music.163.com/api/playlist/detail?id=718169090',
+      header:{
+        cookie:"MUSIC_U=675fb74408213020288a334790de3971b87f628b7d8fb6ae85721bab949eee9c33a649814e309366; Max-Age=1296000; Expires=Tue 9 Feb 2021 07:24:23 GMT; Path=/"
+      },
+      success:function(res){
+        console.log(res.data.result);
+      }
+    })
    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  getlist:function(){
-    let that=this
-    wx.request({
-      url: 'http://musicapi.leanapp.cn/top/playlist/highquality/%E5%8D%8E%E8%AF%AD',
-      success: (result) => {
-        console.log(result.data.playlists);
-        that.setData({
-          playlists:result.data.playlists.splice(0,6)
-        })
-      },
-      fail: (res) => {},
-      complete: (res) => {},
-    })
-  },
+  // getlist:function(){
+  //   let that=this
+  //   wx.request({
+  //     url: 'http://musicapi.leanapp.cn/top/playlist/highquality/%E5%8D%8E%E8%AF%AD',
+  //     success: (result) => {
+  //       console.log(result.data.playlists);
+  //       that.setData({
+  //         playlists:result.data.playlists.splice(0,6)
+  //       })
+  //     },
+  //     fail: (res) => {},
+  //     complete: (res) => {},
+  //   })
+  // },
   onReady: function () {
-    this.getlist()
+
   },
 
   /**
