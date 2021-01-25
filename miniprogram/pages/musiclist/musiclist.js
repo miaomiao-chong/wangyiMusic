@@ -13,6 +13,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    wx.cloud.callFunction({
+      name:'music',
+      data:{
+        playlistId:options.playlistId,
+        $url:'musiclist'
+      }
+    }).then((res)=>{
+      console.log(res);
+  })
   },
 
   /**
