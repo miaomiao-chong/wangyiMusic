@@ -1,4 +1,5 @@
-// miniprogram/pages/musiclist/musiclist.js
+// miniprogram/pages/demo2/demo2.js
+import request from '../../utils/request'
 Page({
 
   /**
@@ -11,24 +12,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options);
-    wx.cloud.callFunction({
-      name:'music',
-      data:{
-        playlistId:options.playlistId,
-        $url:'musiclist'
-      }
-    }).then((res)=>{
-      console.log(res);
-      this.setData({
-        musiclist:res.result.result.tracks,
-        listInfo:{
-          coverImg:res.result.result.coverImgUrl,
-          name:res.result.result.name
-        }
-      })
-  })
+  onLoad:async function (options) {
+    var list= await request('/topic/detail',{actid:111551188})
+    console.log(list);
   },
 
   /**

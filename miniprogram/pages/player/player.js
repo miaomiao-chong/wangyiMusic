@@ -1,4 +1,4 @@
-// miniprogram/pages/musiclist/musiclist.js
+// miniprogram/pages/player/player.js
 Page({
 
   /**
@@ -13,22 +13,6 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    wx.cloud.callFunction({
-      name:'music',
-      data:{
-        playlistId:options.playlistId,
-        $url:'musiclist'
-      }
-    }).then((res)=>{
-      console.log(res);
-      this.setData({
-        musiclist:res.result.result.tracks,
-        listInfo:{
-          coverImg:res.result.result.coverImgUrl,
-          name:res.result.result.name
-        }
-      })
-  })
   },
 
   /**

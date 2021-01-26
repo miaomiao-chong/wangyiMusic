@@ -68,6 +68,37 @@
         {
           "name": "pages/playList/playList",
           "pathName": "pages/playList/playList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId: \"718169090",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId=4974682089",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId: 718169090",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId: \"2799091270\"",
+          "scene": null
+        },
+        {
+          "name": "pages/demo2/demo2",
+          "pathName": "pages/demo2/demo2",
+          "query": "",
           "scene": null
         }
       ]
