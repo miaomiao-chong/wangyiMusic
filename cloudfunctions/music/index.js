@@ -33,5 +33,20 @@ exports.main = async (event, context) => {
       return JSON.parse(res)
     })
   })
+  let BASE_URL='https://api.imjad.cn/cloudmusic/'
+  //根据id获取歌词和播放地址
+  app.router('musicUrl',async(ctx,next)=>{
+    //注意这句一定要加
+    ctx.data={}
+    await rp(BASE_URL+`?type=song&id=${event.musicId}`).then((res)=>{
+      ctx.data.musicUrl= JSON.parse(res).data[0].url})
+    await rp(BASE_URL+`?type=lyric&id=${event.musicId}&br=128000`).then((res)=>{
+      res=JSON.parse(res)
+      ctx.data.musicLyric=res.lrc.lyric
+      ctx.body={
+          data:ctx.data
+        }
+      })
+  })
   return app.serve()
 }

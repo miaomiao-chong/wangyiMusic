@@ -1,4 +1,6 @@
 // miniprogram/pages/player/player.js
+
+
 //缓存取出来的列表
 let musicInfo={}
 //正在播放音乐的下标 也不需要在界面显示
@@ -30,22 +32,32 @@ Page({
  _getmusicDetail(musicId,index){
    let that=this
    //得到歌曲播放的url
-   wx.request({
-      url: 'https://api.imjad.cn/cloudmusic/?type=song&id='+musicId,
-      success:function(e){
-        that.setData({
-          'musicUrl.url':e.data.data[0].url
-        })
+  //  下面注释的改为用tcbRouter实现
+  //  wx.request({
+  //     url: 'https://api.imjad.cn/cloudmusic/?type=song&id='+musicId,
+  //     success:function(e){
+  //       that.setData({
+  //         'musicUrl.url':e.data.data[0].url
+  //       })
+  //     }
+  //   }),
+  //   //得到歌词
+  //   wx.request({
+  //     url: 'https://api.imjad.cn/cloudmusic/?type=lyric&id='+musicId+'&br=128000',
+  //     success:function(e){
+  //       that.setData({
+  //         'musicUrl.lyric':e.data.lrc.lyric
+  //       })
+  //     }
+  //   })
+    wx.cloud.callFunction({
+      name:'music',
+      data:{
+        $url:"musicUrl",
+        musicId:musicId
       }
-    }),
-    //得到歌词
-    wx.request({
-      url: 'https://api.imjad.cn/cloudmusic/?type=lyric&id='+musicId+'&br=128000',
-      success:function(e){
-        that.setData({
-          'musicUrl.lyric':e.data.lrc.lyric
-        })
-      }
+    }).then((res)=>{
+      console.log(res);
     })
     //得到歌曲名字，歌手，图片等（缓存拿过来的）
     //为什么musicInfo要定义在外面呢 思考一下 因为musicinfo东西太多了，我们不需要那么多数据，如果定义在外面好操作一点
