@@ -42,7 +42,9 @@ exports.main = async (event, context) => {
       ctx.data.musicUrl= JSON.parse(res).data[0].url})
     await rp(BASE_URL+`?type=lyric&id=${event.musicId}&br=128000`).then((res)=>{
       res=JSON.parse(res)
-      ctx.data.musicLyric=res.lrc.lyric
+      //没有歌词的情况
+      ctx.data.musicLyric=res.lrc?res.lrc.lyric:''
+      
       ctx.body={
           data:ctx.data
         }

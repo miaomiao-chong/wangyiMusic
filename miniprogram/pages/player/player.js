@@ -68,18 +68,21 @@ Page({
       wx.hideLoading({
         success: (res) => {},
       })
+        //不知道请求歌曲数据失败是怎么返回的，暂时这样写吧
       if(res.result.data.musicUrl.musicUrl==''){
         wx.showToast({
           title: '请求歌曲数据失败',
           icon:'none'
         })
       }
-      if(res.result.data.musicUrl.musicLyric==''){
-        lyricData=false
-      }
+      // console.log(lyricData);
       this.setData({
         musicUrl:res.result.data
       })
+      if(this.data.musicUrl.musicLyric==''){
+        lyricData=false
+        console.log(lyricData);
+      }
     })
     //得到歌曲名字，歌手，图片等（缓存拿过来的）
     //为什么musicInfo要定义在外面呢 思考一下 因为musicinfo东西太多了，我们不需要那么多数据，如果定义在外面好操作一点
