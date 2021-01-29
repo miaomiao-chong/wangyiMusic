@@ -1,10 +1,14 @@
 // miniprogram/pages/player/player.js
 
 
+
+
 //缓存取出来的列表
 let musicInfo={}
 //正在播放音乐的下标 也不需要在界面显示
 let nowPlayingIndex=0
+//有的歌曲拿不到歌曲
+let lyricData=true
 Page({
 
   /**
@@ -50,6 +54,9 @@ Page({
   //       })
   //     }
   //   })
+   wx.showLoading({
+    title: '加载中',
+  })
     wx.cloud.callFunction({
       name:'music',
       data:{
@@ -58,6 +65,21 @@ Page({
       }
     }).then((res)=>{
       console.log(res);
+      wx.hideLoading({
+        success: (res) => {},
+      })
+      if(res.result.data.musicUrl.musicUrl==''){
+        wx.showToast({
+          title: '请求歌曲数据失败',
+          icon:'none'
+        })
+      }
+      if(res.result.data.musicUrl.musicLyric==''){
+        lyricData=false
+      }
+      this.setData({
+        musicUrl:res.result.data
+      })
     })
     //得到歌曲名字，歌手，图片等（缓存拿过来的）
     //为什么musicInfo要定义在外面呢 思考一下 因为musicinfo东西太多了，我们不需要那么多数据，如果定义在外面好操作一点
