@@ -28,6 +28,7 @@ Page({
           name:res.result.result.name
         }
       })
+      wx.setStorageSync('musiclist', this.data.musiclist)
   })
   },
 

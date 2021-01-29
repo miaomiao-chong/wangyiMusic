@@ -23,13 +23,15 @@ Component({
    */
   methods: {
     onSelect(event){
+      console.log(event);
       console.log(event.currentTarget.dataset.musicid);
       this.setData({
         playingId:event.currentTarget.dataset.musicid
       })
       wx.navigateTo({
-        url: '../../pages/player/player?musicId='+this.data.playingId,
+        url: '../../pages/player/player?musicId='+this.data.playingId+'&index='+event.currentTarget.dataset.index,
       })
     }
+
   }
 })

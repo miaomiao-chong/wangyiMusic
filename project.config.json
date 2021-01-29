@@ -80,7 +80,7 @@
         {
           "name": "pages/musiclist/musiclist",
           "pathName": "pages/musiclist/musiclist",
-          "query": "playlistId=4974682089",
+          "query": "",
           "scene": null
         },
         {
@@ -98,6 +98,12 @@
         {
           "name": "pages/demo2/demo2",
           "pathName": "pages/demo2/demo2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/playList/playList",
+          "pathName": "pages/playList/playList",
           "query": "",
           "scene": null
         }

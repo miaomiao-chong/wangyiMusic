@@ -1,2 +1,15 @@
-<!--miniprogram/pages/player/player.wxml-->
-<text>miniprogram/pages/player/player.wxml</text>
+<view class="container" style="background:url({{musicInfo.pic}}) center/cover "></view>
+<view class="mask"></view>
+<view class="player-info">
+  <view class="player-disc">
+    <image class="player-img" src="{{musicInfo.pic}}"></image>
+  </view>
+  <!-- 控制面板 -->
+  <view class="control">
+    <text class="iconfont icon-shangyiqu" bind:tap="onPrev"></text>
+    <text class="iconfont icon-bofang" bind:tap="togglePlaying"></text>
+    <text class="iconfont icon-xiayiqu" bind:tap="onNext"></text>
+  </view>
+
+</view>
+
