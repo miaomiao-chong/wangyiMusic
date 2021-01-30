@@ -1,13 +1,13 @@
 <view class="container" style="background:url({{musicInfo.pic}}) center/cover "></view>
 <view class="mask"></view>
 <view class="player-info">
-  <view class="player-disc">
-    <image class="player-img" src="{{musicInfo.pic}}"></image>
+  <view class="player-disc  {{isplaying?'play': ''}}">
+    <image class="player-img rotation {{isplaying?'':'rotation-paused'}}" src="{{musicInfo.pic}}"></image>
   </view>
   <!-- 控制面板 -->
   <view class="control">
     <text class="iconfont icon-shangyiqu" bind:tap="onPrev"></text>
-    <text class="iconfont icon-bofang" bind:tap="togglePlaying"></text>
+    <text class="iconfont {{isplaying?'icon-bofang1':'icon-bofang'}}" bind:tap="togglePlaying"></text>
     <text class="iconfont icon-xiayiqu" bind:tap="onNext"></text>
   </view>
 

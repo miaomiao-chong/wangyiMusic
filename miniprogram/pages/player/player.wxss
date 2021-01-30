@@ -55,6 +55,27 @@ page{
   transform-origin: 24rpx 10rpx;
   transition: transform 0.5s ease;
 }
+.play.player-disc::after {
+  transform: rotate(0deg);
+}
+.rotation {
+  animation: rotation 12s linear infinite;
+  -moz-animation: rotation 12s linear infinite;
+  -webkit-animation: rotation 12s linear infinite;
+  -o-animation: rotation 12s linear infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotation-paused {
+  animation-play-state: paused;
+}
 /* 也是全部占满 */
 /* .player-info {
   text-align: center;
