@@ -4,6 +4,12 @@
   <view class="player-disc  {{isplaying?'play': ''}}">
     <image class="player-img rotation {{isplaying?'':'rotation-paused'}}" src="{{musicInfo.pic}}"></image>
   </view>
+  <!-- 进度条组件 -->
+  <view class="progress-bar">
+    <s-progress-bar></s-progress-bar>
+  </view>
+
+
   <!-- 控制面板 -->
   <view class="control">
     <text class="iconfont icon-shangyiqu" bind:tap="onPrev"></text>

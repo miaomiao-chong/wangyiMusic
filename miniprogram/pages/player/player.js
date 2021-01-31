@@ -35,6 +35,7 @@ Page({
  
   },
  _getmusicDetail(musicId,nowPlayingIndex){
+   //一开始停止播放 后面请求到数据再开始播放
    backgroundAudioManager.stop()
    let that=this
    //得到歌曲播放的url
@@ -74,7 +75,7 @@ Page({
       wx.hideLoading({
         success: (res) => {},
       })
-        //不知道请求歌曲数据失败是怎么返回的，暂时这样写吧
+        //不知道请求歌曲数据失败
       if(res.result.data.musicUrl==''){
         wx.showToast({
           title: '请求歌曲数据失败',
@@ -90,6 +91,7 @@ Page({
         }
         backgroundAudioManager.src=this.data.musicUrl.musicUrl
         backgroundAudioManager.title=this.data.musicInfo.name
+        // 请求到数据开始播放
         backgroundAudioManager.play()
         this.setData({
           isplaying:true
