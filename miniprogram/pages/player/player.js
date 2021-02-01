@@ -14,6 +14,7 @@ Page({
    */
   data: {
     isplaying:false,   //是否自动播放
+    islyricShow:false, //当前歌词是否显示
     musicUrl:{
       url:'',
       lyric:''
@@ -144,6 +145,12 @@ Page({
       nowPlayingIndex = 0
     }
     this. _getmusicDetail(musicInfo[nowPlayingIndex].id,nowPlayingIndex)
+  },
+  onChangeLyricShow(){
+    this.setData({
+      islyricShow:!this.data.islyricShow
+    })
+    console.log(this.data.islyricShow);
   },
 
   /**

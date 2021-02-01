@@ -5,6 +5,7 @@ const backgroundAudioManager=wx.getBackgroundAudioManager()
 // 优化setdata次数过多的情况
 let currentSec=-1
 let duration=0 //当前歌曲总时长 我们的data里面也有个总时长，但是是给用户看的，我们这个是计算用的 以s为单位
+let isMoving=false //解决进度条拖拽冲突
 Component({
   /**
    * 组件的属性列表
@@ -48,6 +49,7 @@ Component({
         // 疑问：这里的progress和movableDis指的是什么？
         this.data.progress=e.detail.x/(movableAreaWidth-movableViewWidth)*100
         this.data.movableDis=e.detail.x
+        isMoving=true
       }
     },
     onTouchEnd(){
@@ -59,6 +61,7 @@ Component({
       })
       console.log(this.data.progress);
       backgroundAudioManager.seek(duration*this.data.progress/100)
+      isMoving=false
     },
 
     //获取可移动滑块的宽度(不同的手机宽度不一样)
@@ -80,6 +83,7 @@ Component({
     _bindBGMEvent(){
       backgroundAudioManager.onPlay(()=>{
         console.log("onplay")
+        // isMoving=false
       })
    
       backgroundAudioManager.onStop(() => {
@@ -109,30 +113,33 @@ Component({
       })
 
       backgroundAudioManager.onTimeUpdate(() => {
-        const currentTime=backgroundAudioManager.currentTime
-        const duration=backgroundAudioManager.duration
-        //变成字符串根据点分割，如果与currentSec不相等，就setdata
-        
-        if(currentTime.toString().split('.')[0]!=currentSec){
-          console.log(currentTime);//测试setdata的次数是不是少了
-          const currentTimeFmt=this._dateFormat(currentTime)
-          this.setData({
-            //正在播放的时间,滑块距离，进度
-            "showTime.currentTime":`${currentTimeFmt.min}:${currentTimeFmt.sec}`,
-            movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
-            progress: currentTime / duration * 100,
-          })
-          currentSec=currentTime.toString().split('.')[0]
+        if(!isMoving){
+          const currentTime=backgroundAudioManager.currentTime
+          const duration=backgroundAudioManager.duration
+          //变成字符串根据点分割，如果与currentSec不相等，就setdata
+          
+          if(currentTime.toString().split('.')[0]!=currentSec){
+            console.log(currentTime);//测试setdata的次数是不是少了
+            const currentTimeFmt=this._dateFormat(currentTime)
+            this.setData({
+              //正在播放的时间,滑块距离，进度
+              "showTime.currentTime":`${currentTimeFmt.min}:${currentTimeFmt.sec}`,
+              movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
+              progress: currentTime / duration * 100,
+            })
+            currentSec=currentTime.toString().split('.')[0]
+          }
+      
+          // console.log(this.data.progress);
+          // console.log(currentTime/duration);
+          // console.log('onTimeUpdate')
         }
-    
-        // console.log(this.data.progress);
-        // console.log(currentTime/duration);
-        // console.log('onTimeUpdate')
+       
       })
 
       backgroundAudioManager.onEnded(() => {
         console.log("onEnded")
-      
+        this.triggerEvent("musicEnd")
       })
 
       backgroundAudioManager.onError((res) => {
