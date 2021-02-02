@@ -15,9 +15,22 @@ Component({
   },
   observers: {
     lyric(lrc) {
-      // console.log(lrc);
-      this._parseLrc(lrc)
+      if(lrc=="暂无歌词"){
+        this.setData({
+          lrcList: [{
+            lrc:'暂无歌词',
+            time: 0,
+          }],
+          nowLyricIndex: -1
+        })
+      }else{
+        // console.log(lrc);
+        this._parseLrc(lrc)
+        console.log(lrc);  
+      }
+   
     }
+
   },
 
   /**
@@ -48,6 +61,15 @@ Component({
       let lrcList = this.data.lrcList
       if (lrcList.length == 0) {
         return
+      }
+       //解决进度条拖到最后 歌词不滑到最下面问题
+      if (currentTime > lrcList[lrcList.length - 1].time) {
+        if (this.data.nowLyricIndex != -1) {
+          this.setData({
+            nowLyricIndex: -1,
+            scrollTop: lrcList.length * lyricHeight
+          })
+        }
       }
       for (let i = 0, len = lrcList.length; i < len; i++) {
         if (currentTime <= lrcList[i].time) {
