@@ -128,6 +128,10 @@ Component({
               progress: currentTime / duration * 100,
             })
             currentSec=currentTime.toString().split('.')[0]
+            //传给lyric组件 歌词联动效果
+            this.triggerEvent("timeUpdate",{
+              currentTime
+            })
           }
       
           // console.log(this.data.progress);
@@ -153,14 +157,14 @@ Component({
     //进度条的时间
     _setTime(){
       duration=backgroundAudioManager.duration
-      console.log(duration);
+      // console.log(duration);
       const durationFMT=this._dateFormat(duration)
-      console.log(durationFMT);
+      // console.log(durationFMT);
       this.setData({
         "showTime.totalTime":`${durationFMT.min}:${durationFMT.sec}`
         //这里老师说外面要加中括号,我没加也赋上值了
       })
-      console.log(this.data.showTime.totalTime);
+      // console.log(this.data.showTime.totalTime);
     },
     //格式化时间
     _dateFormat(second){

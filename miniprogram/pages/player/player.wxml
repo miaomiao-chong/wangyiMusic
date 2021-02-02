@@ -7,10 +7,10 @@
 
   <!-- 歌词 -->
   <!-- 把状态传到歌词组件里 -->
-  <s-lyric islyricShow="{{!islyricShow}}" bindtap="onChangeLyricShow" lyric="{{musicUrl.musicLyric}}"></s-lyric>
+  <s-lyric islyricShow="{{!islyricShow}}" bindtap="onChangeLyricShow" lyric="{{musicUrl.musicLyric}}" class="lyric"></s-lyric>
   <!-- 进度条组件 -->
   <view class="progress-bar">
-    <s-progress-bar bindmusicEnd="onNext"></s-progress-bar>
+    <s-progress-bar bindmusicEnd="onNext" bind:timeUpdate="timeUpdate"></s-progress-bar>
   </view>
 
 

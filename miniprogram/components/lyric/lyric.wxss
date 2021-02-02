@@ -17,3 +17,7 @@
 }
 
 
+
+.hightlight-lyric {
+  color: #d43c33;
+}
