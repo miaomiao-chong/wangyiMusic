@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "s-progress-bar":"../../components/progress-bar/progress-bar",
-    "s-lyric":"../../components/lyric/lyric"
-  }
-}

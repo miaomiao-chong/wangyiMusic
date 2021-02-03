@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "s-playList":"../../components/playList/playList"
-  },
-  "enablePullDownRefresh": true
-}
