@@ -1,0 +1,27 @@
+/* components/search/search.wxss */
+@import "./searchIcon.wxss";
+.container{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.searchBtn{
+  font-size: 23rpx;
+  background: rgb(216, 115, 115);
+  margin-left: 20rpx;
+}
+.bar{
+  flex: 1;
+  background-color: rgb(235, 229, 229);
+  height: 56rpx;
+  border-radius: 30rpx;
+  padding-left: 60rpx;
+}
+.in-bar{
+  color: rgb(148, 147, 144);
+}
+.searchIcon{
+  position: absolute;
+  left: 10rpx;
+  font-size: 36rpx;
+}
