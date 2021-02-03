@@ -1,0 +1,2 @@
+<button bindtap="getMusicInfo">获取音乐信息</button>
+<button bindtap="getMovieInfo">获取电影信息</button>

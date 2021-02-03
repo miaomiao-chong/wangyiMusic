@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -38,19 +38,17 @@
     "minifyWXSS": true
   },
   "appid": "wxc0101e15f32abc6a",
-  "projectname": "miniprogram-15",
+  "projectname": "music",
   "libVersion": "2.14.1",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
@@ -58,7 +56,56 @@
         {
           "id": -1,
           "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide"
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/demo/demo",
+          "pathName": "pages/demo/demo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/playList/playList",
+          "pathName": "pages/playList/playList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId=718169090",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId: 718169090",
+          "scene": null
+        },
+        {
+          "name": "pages/musiclist/musiclist",
+          "pathName": "pages/musiclist/musiclist",
+          "query": "playlistId=2799091270",
+          "scene": null
+        },
+        {
+          "name": "pages/demo2/demo2",
+          "pathName": "pages/demo2/demo2",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/playList/playList",
+          "pathName": "pages/playList/playList",
+          "query": "",
+          "scene": null
         }
       ]
     }
