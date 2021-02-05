@@ -1,0 +1,6 @@
+<view class="mask" hidden="{{!modalShow}}">
+  <view class="panel">
+    <view class="close" bindtap="close">X</view>
+    <slot name="modalContent"></slot>
+  </view>
+</view>

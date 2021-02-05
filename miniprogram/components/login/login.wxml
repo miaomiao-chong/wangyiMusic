@@ -1,0 +1,5 @@
+<s-bottom-modal modalShow="{{modalShow}}">
+  <view slot="modalContent">
+    <button class="login" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
+  </view>
+</s-bottom-modal>
