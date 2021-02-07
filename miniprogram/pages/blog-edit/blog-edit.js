@@ -66,7 +66,7 @@ Page({
           success: res => {
             console.log('上传成功', res.fileID)
             fileIds=fileIds.concat(res.fileID)
-        
+           
             resolve()
           },
         })
@@ -89,10 +89,8 @@ Page({
         wx.showToast({
           title: '发送成功',
         })
-        //跳回blog页面
-        wx.navigateBack({
-          delta: 1,
-        })
+        //发送成功跳转回去
+        wx.navigateBack()
       }).catch((err)=>{
         console.log("传入数据库失败");
         wx.hideLoading()
