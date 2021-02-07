@@ -1,6 +1,9 @@
 // miniprogram/pages/blog-edit/blog-edit.js
 let TEXT_NUM_MAX = 100
 let IMG_MAX = 9
+const db=wx.cloud.database()  //数据库
+let content=''
+let userInfo={}
 Page({
 
   /**
@@ -11,11 +14,12 @@ Page({
     imgArr:[],     //图片列表
     showAddIcon: true, //是否显示加号
     footerBottom: 0, //输入时 footer距底部高度
-
   },
+ 
   //输入字数显示
   handleInput(e) {
     let textCount = e.detail.value.length
+    content=e.detail.value  //输入内容
     this.setData({
       textCount
     })
@@ -45,10 +49,60 @@ Page({
           })
         }
       },
-
     })
-
   },
+  send(){
+    wx.showLoading({
+      title: '正在发送',
+    })
+    let promiseArr=[]
+    let fileIds=[]   //云存储图片地址数组
+    for(let i=0;i<this.data.imgArr.length;i++){
+     let p=new Promise((resolve,reject)=>{
+        let item=this.data.imgArr[i]
+        wx.cloud.uploadFile({
+          cloudPath: 'blog/'+Date.now()+'.jpg',
+          filePath:item,
+          success: res => {
+            console.log('上传成功', res.fileID)
+            fileIds=fileIds.concat(res.fileID)
+        
+            resolve()
+          },
+        })
+     })
+     promiseArr.push(p)
+    }
+    Promise.all(promiseArr).then((res)=>{
+      console.log("都执行完了");
+      //下面是执行放入数据库操作
+      db.collection("blog").add({
+        data:{
+          fileIds,   //图片
+          content,   //输入内容
+          ...userInfo , //昵称，头像
+          date:db.serverDate() ,//时间
+        }
+      }).then((res)=>{
+        console.log("传入数据库成功");
+        wx.hideLoading()
+        wx.showToast({
+          title: '发送成功',
+        })
+        //跳回blog页面
+        wx.navigateBack({
+          delta: 1,
+        })
+      }).catch((err)=>{
+        console.log("传入数据库失败");
+        wx.hideLoading()
+        wx.showToast({
+          title: '发送失败',
+        })
+      })
+    })
+  },
+
   //删除图片
   deleteImg(e){
     let index=e.currentTarget.dataset.index
@@ -75,12 +129,15 @@ Page({
       footerBottom: 0
     })
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options);
-    // 这里暂时不用 我们先写布局和样式
+    console.log(options);
+    userInfo=options
+
   },
 
   /**

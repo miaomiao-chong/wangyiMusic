@@ -3,11 +3,12 @@
     bindinput="handleInput"
     bindfocus="onFocus"
     bindblur="onBlur"
+    placeholder="分享新鲜事"
   ></textarea>
 
   <view class="imgContainer">
-    <view class="imgWrap" wx:for="{{imgArr}}" >
-      <text class="delImg" bindtap="deleteImg" data-index="{{index}}">X</text>
+    <view class="imgWrap" wx:for="{{imgArr}}"bindtap="deleteImg" data-index="{{index}}" >
+      <text class="delImg">X</text>
       <image class="imgItem" src="{{item}}"></image>
       <!-- 放图片的地方 -->
     </view>
@@ -17,6 +18,6 @@
 
   <view class="footer" style="bottom:{{footerBottom}}px">
     <text class="count">{{textCount}}</text>
-    <button class="publishBtn">发布</button>
+    <button class="publishBtn" bindtap="send"> 发布</button>
   </view>
 </view>
