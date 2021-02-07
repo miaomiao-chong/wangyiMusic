@@ -6,9 +6,9 @@
   ></textarea>
 
   <view class="imgContainer">
-    <view class="imgWrap" wx:for="{{imgArr}}"bindtap="deleteImg" data-index="{{index}}" >
-      <text class="delImg">X</text>
-      <image class="imgItem" src="{{item.path}}"></image>
+    <view class="imgWrap" wx:for="{{imgArr}}" >
+      <text class="delImg" bindtap="deleteImg" data-index="{{index}}">X</text>
+      <image class="imgItem" src="{{item}}"></image>
       <!-- 放图片的地方 -->
     </view>
     <!-- 添加图片的加号 -->

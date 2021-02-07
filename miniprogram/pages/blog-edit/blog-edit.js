@@ -8,25 +8,10 @@ Page({
    */
   data: {
     textCount: 0, //计数（输入框）
-    // imgArr:[],     //图片列表
+    imgArr:[],     //图片列表
     showAddIcon: true, //是否显示加号
     footerBottom: 0, //输入时 footer距底部高度
-    imgArr: [
 
-      {
-        path: "http://tmp/uFO2Yzqusojcc3a2f16de18a2e507cb3e53c43dd9f34.jpeg",
-        size: 182066
-      },
-      {
-        path: "http://tmp/B6PF8yZARKDlfc5f223a25f4649d56ddaeda7bdf95e8.jpg",
-        size: 9042
-      },
-
-      {
-        path: "http://tmp/ZDHeoDn6uvyM7ba85778392e2df0bee14bd2f8124fc2.jpg",
-        size: 674230
-      }
-    ]
   },
   //输入字数显示
   handleInput(e) {
@@ -48,7 +33,8 @@ Page({
     wx.chooseImage({
       count: IMG_MAX - this.data.imgArr.length,
       success: (e) => {
-        imgArr = e.tempFiles
+        console.log(e);
+        imgArr = e.tempFilePaths
         this.setData({
           imgArr: this.data.imgArr.concat(imgArr)
         })
