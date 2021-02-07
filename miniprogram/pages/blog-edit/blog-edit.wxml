@@ -1,17 +1,21 @@
 <view class="container">
-  <textarea class="inputText" maxlength="120"
+  <textarea class="inputText" maxlength="100"
     bindinput="handleInput"
+    bindfocus="onFocus"
+    bindblur="onBlur"
   ></textarea>
 
   <view class="imgContainer">
-    <view class="imgWrap">
+    <view class="imgWrap" wx:for="{{imgArr}}"bindtap="deleteImg" data-index="{{index}}" >
+      <text class="delImg">X</text>
+      <image class="imgItem" src="{{item.path}}"></image>
       <!-- 放图片的地方 -->
     </view>
     <!-- 添加图片的加号 -->
-    <view class="add">+</view>
+    <view class="add" bindtap="addImg" hidden="{{!showAddIcon}}">+</view>
   </view>
 
-  <view class="footer">
+  <view class="footer" style="bottom:{{footerBottom}}px">
     <text class="count">{{textCount}}</text>
     <button class="publishBtn">发布</button>
   </view>

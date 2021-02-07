@@ -1,14 +1,93 @@
 // miniprogram/pages/blog-edit/blog-edit.js
+let TEXT_NUM_MAX = 100
+let IMG_MAX = 9
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    textCount:0
+    textCount: 0, //计数（输入框）
+    // imgArr:[],     //图片列表
+    showAddIcon: true, //是否显示加号
+    footerBottom: 0, //输入时 footer距底部高度
+    imgArr: [
+
+      {
+        path: "http://tmp/uFO2Yzqusojcc3a2f16de18a2e507cb3e53c43dd9f34.jpeg",
+        size: 182066
+      },
+      {
+        path: "http://tmp/B6PF8yZARKDlfc5f223a25f4649d56ddaeda7bdf95e8.jpg",
+        size: 9042
+      },
+
+      {
+        path: "http://tmp/ZDHeoDn6uvyM7ba85778392e2df0bee14bd2f8124fc2.jpg",
+        size: 674230
+      }
+    ]
   },
-  handleInput(e){
-    console.log(e.detail.value);
+  //输入字数显示
+  handleInput(e) {
+    let textCount = e.detail.value.length
+    this.setData({
+      textCount
+    })
+    if (textCount >= TEXT_NUM_MAX) {
+      this.setData({
+        textCount: `最多输入${TEXT_NUM_MAX}个字`
+      })
+    }
+  },
+  //添加图片
+  addImg() {
+    //存放图片的数组
+    let count = 0
+    let imgArr = []
+    wx.chooseImage({
+      count: IMG_MAX - this.data.imgArr.length,
+      success: (e) => {
+        imgArr = e.tempFiles
+        this.setData({
+          imgArr: this.data.imgArr.concat(imgArr)
+        })
+        let length = this.data.imgArr.length
+        if (length >= IMG_MAX) {
+          this.setData({
+            showAddIcon: false
+          })
+        }
+      },
+
+    })
+
+  },
+  //删除图片
+  deleteImg(e){
+    let index=e.currentTarget.dataset.index
+    let imgArr=this.data.imgArr
+    imgArr.splice(index,1)
+    this.setData({
+      imgArr
+    })
+    this.setData({
+      showAddIcon:true
+    })
+    
+  },
+  // 更改footer距底部高度
+  onFocus(e) {
+    console.log(e.detail.height);
+    let height = e.detail.height
+    this.setData({
+      footerBottom: height
+    })
+  },
+  onBlur() {
+    this.setData({
+      footerBottom: 0
+    })
   },
   /**
    * 生命周期函数--监听页面加载
