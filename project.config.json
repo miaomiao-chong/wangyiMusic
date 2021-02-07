@@ -94,6 +94,11 @@
           "pathName": "pages/blog/blog",
           "query": "playlistId=2799091270",
           "scene": null
+        },
+        {
+          "name": "pages/blog-edit/blog-edit",
+          "pathName": "pages/blog-edit/blog-edit",
+          "scene": null
         }
       ]
     }

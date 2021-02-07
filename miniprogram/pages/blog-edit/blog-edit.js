@@ -1,47 +1,21 @@
-// pages/blog/blog.js
+// miniprogram/pages/blog-edit/blog-edit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    modalShow: false
+    textCount:0
   },
-  onPublish() {
-    wx.getSetting({
-      success: (res) => {
-        // console.log(res);
-        if (res.authSetting["scope.userInfo"]) {
-          console.log("已经授权 这里待会做跳转");
-          wx.getUserInfo({
-            success:(res)=>{
-              console.log(res);
-              this.loginSuccess(res.userInfo)
-            }
-          })
-     
-        } else {
-          this.setData({
-            modalShow: true
-          })
-        }
-      }
-    })
-
-  },
-  //跳转到编辑页面
-  loginSuccess(e){
-    console.log(e);
-
-    wx.navigateTo({
-      url: `../blog-edit/blog-edit?nickName=${e.nickName}&avatarUrl=${e.avatarUrl}`,
-    })
+  handleInput(e){
+    console.log(e.detail.value);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options);
+    // 这里暂时不用 我们先写布局和样式
   },
 
   /**

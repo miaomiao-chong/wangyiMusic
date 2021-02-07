@@ -1,0 +1,38 @@
+/* miniprogram/pages/blog-edit/blog-edit.wxss */
+.container{
+  padding: 0 20rpx;
+}
+/* 输入框 */
+.inputText{
+  margin:20rpx 0;
+  border: 1rpx solid black;
+  
+}
+/* 添加图片的加号 */
+.add{
+  width: 200rpx;
+  height: 200rpx;
+  font-size: 100rpx;
+  line-height: 200rpx;
+  border: 1rpx solid black;
+  text-align: center;
+}
+
+/* 底部footer */
+.footer{
+  width: 100%;
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  align-items: center;
+}
+.count{
+  flex: 1;
+  text-align: right;
+
+}
+.publishBtn{
+  margin:0 30rpx;
+  font-size: 26rpx;
+  background-color: rgb(196, 68, 68);
+}

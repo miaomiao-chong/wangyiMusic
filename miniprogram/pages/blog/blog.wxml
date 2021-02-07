@@ -8,5 +8,5 @@
     </view>
   </view>
   <!-- 底部弹窗 -->
-  <s-login modalShow="{{modalShow}}"></s-login>
+  <s-login modalShow="{{modalShow}}" bindloginSuccess="loginSuccess"></s-login>
 </view>
