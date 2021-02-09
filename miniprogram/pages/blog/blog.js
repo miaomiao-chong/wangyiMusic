@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    modalShow: false
+    modalShow: false,
+    blogList:[]   //博客列表
   },
   onPublish() {
     wx.getSetting({
@@ -41,9 +42,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._loadBlogList()
   },
-
+  //获取博客列表
+  _loadBlogList(){
+    wx.cloud.callFunction({
+      name:"blog",
+      data:{
+        $url:"list",
+        start:this.data.blogList.length,
+        count:1
+      }
+    }).then((res)=>{
+      console.log(res);
+      this.setData({
+        blogList:this.data.blogList.concat(res.result.data)
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -83,7 +99,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this._loadBlogList()
   },
 
   /**

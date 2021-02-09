@@ -7,6 +7,34 @@
       <s-search></s-search>
     </view>
   </view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>1</view>
+  <view>123456</view>
   <!-- 底部弹窗 -->
   <s-login modalShow="{{modalShow}}" bindloginSuccess="loginSuccess"></s-login>
 </view>
