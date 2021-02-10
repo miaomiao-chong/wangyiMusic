@@ -5,8 +5,9 @@
   height: 100rpx;
   box-sizing: border-box;
   padding: 0 10rpx;
-  /* background-color: rgb(156, 82, 82); */
+  background-color: white;
   position: fixed;
+  top: 0;
   align-items: center;
 }
 .publishContainer{
@@ -24,4 +25,12 @@
 
 .searchContainer{
   flex: 1;
+}
+
+/* 博客卡片组件 */
+.blog-card{
+  margin-top: 120rpx;
+}
+.blog-item{
+  margin-bottom: 20rpx;
 }

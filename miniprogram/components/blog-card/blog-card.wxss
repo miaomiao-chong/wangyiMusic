@@ -1,0 +1,50 @@
+/* components/blog-card/blog-card.wxss */
+page{
+  background-color: rgb(234, 236, 236);
+  box-sizing: border-box;
+}
+.container{
+  padding: 20rpx;
+  background-color: #fff;
+}
+.title{
+  display: flex;
+  align-items: center;
+}
+.avatarImg{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.box{
+  flex: 1;
+}
+.nickName{
+  font-size: 36rpx;
+}
+.time{
+  color: rgb(100, 100, 99);
+  font-size: 30rpx;
+}
+.content{
+  margin: 20rpx 0;
+  font-size: 36rpx;
+  line-height: 1.5;
+}
+.imgContainer{
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 20rpx auto; */
+}
+.img{
+  width: 226rpx;
+  height: 226rpx;
+
+}
+.imgItem{
+  margin-right: 10rpx;
+}
+.imgContainer .img:nth-child(3n){
+  margin-right: 0;
+}

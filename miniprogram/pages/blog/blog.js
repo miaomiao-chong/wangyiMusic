@@ -51,7 +51,7 @@ Page({
       data:{
         $url:"list",
         start:this.data.blogList.length,
-        count:1
+        count:5
       }
     }).then((res)=>{
       console.log(res);

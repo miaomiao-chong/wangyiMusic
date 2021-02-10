@@ -7,34 +7,14 @@
       <s-search></s-search>
     </view>
   </view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>1</view>
-  <view>123456</view>
+  <!-- 博客卡片组件 -->
+  <view class="blog-card">
+    <view class="blog-item" wx:for="{{blogList}}">
+      <s-blog-card blog="{{item}}"></s-blog-card>
+    </view>
+  </view>
+  
+
   <!-- 底部弹窗 -->
   <s-login modalShow="{{modalShow}}" bindloginSuccess="loginSuccess"></s-login>
 </view>
