@@ -3,5 +3,6 @@
     "s-search":"/components/search/search",
     "s-login":"/components/login/login",
     "s-blog-card":"/components/blog-card/blog-card"
-  }
+  },
+  "enablePullDownRefresh": true
 }

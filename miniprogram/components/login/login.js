@@ -24,7 +24,7 @@ Component({
       let userInfo=res.detail.userInfo
       if(userInfo){
         console.log("确认授权");
-        this.triggerEvent("loginSuccess",userInfo.detail)
+        this.triggerEvent("loginSuccess",userInfo)
         wx.showToast({
           title: '授权成功',
         })

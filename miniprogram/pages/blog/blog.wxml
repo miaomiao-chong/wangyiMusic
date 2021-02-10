@@ -10,7 +10,9 @@
   <!-- 博客卡片组件 -->
   <view class="blog-card">
     <view class="blog-item" wx:for="{{blogList}}">
-      <s-blog-card blog="{{item}}"></s-blog-card>
+      <s-blog-card blog="{{item}}"
+        bindtap="goToComment"
+      ></s-blog-card>
     </view>
   </view>
   

@@ -91,6 +91,10 @@ Page({
         })
         //发送成功跳转回去
         wx.navigateBack()
+        let page=getCurrentPages()
+        console.log(page);
+        page[0].onPullDownRefresh()
+
       }).catch((err)=>{
         console.log("传入数据库失败");
         wx.hideLoading()

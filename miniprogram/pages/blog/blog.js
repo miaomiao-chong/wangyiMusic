@@ -17,7 +17,9 @@ Page({
           wx.getUserInfo({
             success:(res)=>{
               console.log(res);
-              this.loginSuccess(res.userInfo)
+              this.loginSuccess({
+                detail:res.userInfo
+              })
             }
           })
      
@@ -33,9 +35,9 @@ Page({
   //跳转到编辑页面
   loginSuccess(e){
     console.log(e);
-
+    let detail=e.detail
     wx.navigateTo({
-      url: `../blog-edit/blog-edit?nickName=${e.nickName}&avatarUrl=${e.avatarUrl}`,
+      url: `../blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
     })
   },
   /**
@@ -46,6 +48,10 @@ Page({
   },
   //获取博客列表
   _loadBlogList(){
+    wx.showLoading({
+      title: '拼命加载中',
+     
+    })
     wx.cloud.callFunction({
       name:"blog",
       data:{
@@ -55,9 +61,15 @@ Page({
       }
     }).then((res)=>{
       console.log(res);
+      wx.hideLoading()
       this.setData({
         blogList:this.data.blogList.concat(res.result.data)
       })
+    })
+  },
+  goToComment(){
+    wx.navigateTo({
+      url: '../blog-comment/blog-comment',
     })
   },
   /**
@@ -92,7 +104,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      //因为要重新加载，所以要把blogList置空
+      blogList:[]
+    })
+    this._loadBlogList()
   },
 
   /**

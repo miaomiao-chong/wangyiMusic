@@ -4,7 +4,7 @@
     <image class="avatarImg" src="{{blog.avatarUrl}}"></image>
     <view class="box">
       <view class="nickName">{{blog.nickName}}</view>
-      <view class="time">{{blog.date}}</view>
+      <view class="time">{{time}}</view>
     </view>
   </view>
   <!-- 内容区 -->
@@ -12,7 +12,11 @@
   <!-- 照片区 -->
   <view class="imgContainer">
     <view class="imgItem" wx:for="{{blog.fileIds}}">
-       <image class="img" src="{{item}}"></image>
+       <image class="img" src="{{item}}"
+        catchtap="clickImg"
+        data-urls="{{blog.fileIds}}"
+        data-current="{{item}}"
+       ></image>
     </view>
   </view>
  
