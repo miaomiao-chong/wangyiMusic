@@ -1,4 +1,5 @@
 // pages/blog/blog.js
+let keyword=''
 Page({
 
   /**
@@ -55,12 +56,14 @@ Page({
     wx.cloud.callFunction({
       name:"blog",
       data:{
+        keyword,
         $url:"list",
         start:this.data.blogList.length,
         count:5
       }
     }).then((res)=>{
       console.log(res);
+      // console.log(keyword);
       wx.hideLoading()
       this.setData({
         blogList:this.data.blogList.concat(res.result.data)
@@ -71,6 +74,14 @@ Page({
     wx.navigateTo({
       url: '../blog-comment/blog-comment',
     })
+  },
+  //搜索
+  onSearch(e){
+    keyword=e.detail.keyword
+    this.setData({
+      blogList:[]
+    })
+    this._loadBlogList()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

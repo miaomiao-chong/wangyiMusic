@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
       return res
     })
   })
-  //根据id 获取歌单对应的歌曲
+  //根据id 获取歌单对应的歌曲 
   app.router('musiclist',async(ctx,next)=>{
     ctx.body=await rp(options)
     .then((res)=>{

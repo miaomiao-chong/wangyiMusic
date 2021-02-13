@@ -4,7 +4,7 @@
       <i class="iconfont icon-fabu"></i>
     </view>
     <view class="searchContainer">
-      <s-search></s-search>
+      <s-search bindsearch="onSearch"></s-search>
     </view>
   </view>
   <!-- 博客卡片组件 -->

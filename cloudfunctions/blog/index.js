@@ -9,7 +9,19 @@ const blogList=db.collection("blog")
 exports.main = async (event, context) => {
   const app=new TcbRouter({event})
   app.router("list",async(ctx,next)=>{
-    let blog=await blogList.skip(event.start)
+    let keyword=event.keyword
+    let w={}
+    //要考虑为空的情况
+    if(keyword.trim()!=''){
+      w={
+        content: db.RegExp({
+          regexp: keyword,
+          options: 'i',
+        })
+      }
+    }
+    let blog=await blogList.where(w)
+      .skip(event.start)
       .limit(event.count)
       .orderBy("date",'desc')   //时间倒序
       .get() 
