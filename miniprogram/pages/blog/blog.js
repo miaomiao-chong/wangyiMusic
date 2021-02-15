@@ -59,7 +59,7 @@ Page({
         keyword,
         $url:"list",
         start:this.data.blogList.length,
-        count:5
+        count:2
       }
     }).then((res)=>{
       console.log(res);

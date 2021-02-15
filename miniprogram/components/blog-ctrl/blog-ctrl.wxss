@@ -1,0 +1,6 @@
+/* components/blog-ctrl/blog-ctrl.wxss */
+.container{
+  display: flex;
+  height: 60rpx;
+}
+.container>view

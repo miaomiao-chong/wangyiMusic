@@ -7,12 +7,14 @@
       <s-search bindsearch="onSearch"></s-search>
     </view>
   </view>
-  <!-- 博客卡片组件 -->
+  <!-- 博客卡片 与评论组件 -->
   <view class="blog-card">
     <view class="blog-item" wx:for="{{blogList}}">
       <s-blog-card blog="{{item}}"
         bindtap="goToComment"
       ></s-blog-card>
+
+      <s-blog-ctrl blogId="{{item._id}}"></s-blog-ctrl>
     </view>
   </view>
   

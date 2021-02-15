@@ -1,0 +1,4 @@
+<view class="container">
+  <view class="comment">评论</view>
+  <view class="share">分享</view>
+</view>
