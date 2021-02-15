@@ -1,4 +1,16 @@
 <view class="container">
-  <view class="comment">评论</view>
+  <view class="comment" bindtap="onComment">评论</view>
   <view class="share">分享</view>
 </view>
+
+<s-login modalShow="{{loginShow}}"
+bindloginSuccess="loginSuccess"
+></s-login>
+<s-bottom-modal modalShow="{{modalShow}}">
+  <view slot="modalContent" class="modalContent">
+    <textarea class="textContent" value="{{content}}"
+      bindinput="textInput"
+    ></textarea>
+    <button class="send" bindtap="send">发送</button>
+  </view>
+</s-bottom-modal>

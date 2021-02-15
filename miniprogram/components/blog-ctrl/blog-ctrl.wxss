@@ -1,6 +1,31 @@
 /* components/blog-ctrl/blog-ctrl.wxss */
 .container{
   display: flex;
-  height: 60rpx;
+  background-color: #fff;
+  height: 80rpx;
 }
-.container>view
+.comment,.share{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comment{
+  border-right: 2rpx solid #f1f1f1;
+}
+
+.modalContent{
+  display: flex;
+}
+.textContent{
+  width: 580rpx;
+  padding: 30rpx;
+  font-size: 29rpx;
+}
+.send{
+  font-size: 28rpx;
+  background-color: red;
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+}
