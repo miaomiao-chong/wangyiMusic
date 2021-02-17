@@ -70,9 +70,11 @@ Page({
       })
     })
   },
-  goToComment(){
+  goToComment(event){
+    console.log(event);
+    let blogId=event.currentTarget.dataset.blogid
     wx.navigateTo({
-      url: '../blog-comment/blog-comment',
+      url: '../blog-comment/blog-comment?blogId='+blogId,
     })
   },
   //搜索

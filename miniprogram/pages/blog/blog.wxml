@@ -12,6 +12,7 @@
     <view class="blog-item" wx:for="{{blogList}}">
       <s-blog-card blog="{{item}}"
         bindtap="goToComment"
+        data-blogId="{{item._id}}"
       ></s-blog-card>
 
       <s-blog-ctrl blogId="{{item._id}}"></s-blog-ctrl>

@@ -12,9 +12,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options);
+    this.setData({
+      blogId:options.blogId
+    })
+    this. _getBlogDetail()
   },
+  _getBlogDetail(){
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name:"blog",
+      data:{
+        blogId:this.data.blogId,
+        $url:"detail"
+      }
+    }).then((res)=>{
+      console.log(res);
 
+      this.setData({
+        blogDetail:res.result.blogDetail[0],
+        blogComment:res.result.comment.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

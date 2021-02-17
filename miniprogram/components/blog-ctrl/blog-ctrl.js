@@ -86,6 +86,7 @@ Component({
           blogId:this.properties.blogId
         }
       }).then(()=>{
+        this.triggerEvent("refreshComment")
        wx.showToast({
          title: '发送成功',
        })
