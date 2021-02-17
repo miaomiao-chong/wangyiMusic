@@ -1,0 +1,1 @@
+<s-blog-ctrl blogId="{{blogId}}" bindrefreshComment="_getBlogDetail"></s-blog-ctrl>

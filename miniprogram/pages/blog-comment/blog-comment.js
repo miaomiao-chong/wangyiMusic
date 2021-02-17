@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    blogId:'',
+    blogComment:[],
+    blogDetail:{}
   },
 
   /**
@@ -30,7 +32,9 @@ Page({
       }
     }).then((res)=>{
       console.log(res);
-
+      wx.hideLoading({
+      
+      })
       this.setData({
         blogDetail:res.result.blogDetail[0],
         blogComment:res.result.comment.data

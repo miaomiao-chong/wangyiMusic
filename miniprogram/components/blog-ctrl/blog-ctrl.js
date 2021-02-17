@@ -7,7 +7,8 @@ Component({
    */
   properties: {
     blogId:{
-      type:String
+      type:String,
+      value:''
     }
   },
 
