@@ -1,1 +1,18 @@
-<s-blog-ctrl blogId="{{blogId}}" bindrefreshComment="_getBlogDetail"></s-blog-ctrl>
+<scroll-view scroll-y="true" class="container" class="container">
+  <s-blog-card blog="{{blogDetail}}"></s-blog-card>
+  <view class="commentContainer">
+    <view class="commentList" wx:for="{{blogComment}}">
+      <view class="header">
+        <image src="{{item.avatarUrl}}"></image>
+        <view class="nickName">{{item.userName}}</view>
+      </view>
+      <view class="comment">
+        {{item.content}}
+      </view>
+      <view class="time">{{item.date}}</view>
+    </view>
+  </view>
+</scroll-view>
+
+
+<s-blog-ctrl class="blog-ctrl" blogId="{{blogId}}" bindrefreshComment="_getBlogDetail"></s-blog-ctrl>

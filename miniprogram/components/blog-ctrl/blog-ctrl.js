@@ -63,13 +63,14 @@ Component({
     //login组件里得到用户信息
     loginSuccess(e){
       userInfo=e.detail
+      
       this.setData({
         modalShow:true
       })
     },
     //发送
     send(){
-  
+      console.log(userInfo);
       console.log("内容为",this.data.content);
       if(this.data.content==''){
         return
@@ -81,7 +82,7 @@ Component({
       db.collection("blog-comment").add({
         data:{
           date:db.serverDate(),
-          userName:userInfo.userName,
+          userName:userInfo.nickName,
           avatarUrl:userInfo.avatarUrl,
           content:this.data.content,
           blogId:this.properties.blogId

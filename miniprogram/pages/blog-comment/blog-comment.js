@@ -1,4 +1,5 @@
 // miniprogram/pages/blog-comment/blog-comment.js
+let formatTime=require('../../utils/formatTime')
 Page({
 
   /**
@@ -6,8 +7,9 @@ Page({
    */
   data: {
     blogId:'',
-    blogComment:[],
-    blogDetail:{}
+    // blogComment:[],
+    blogDetail:{},
+    blogComment:[]
   },
 
   /**
@@ -32,12 +34,14 @@ Page({
       }
     }).then((res)=>{
       console.log(res);
-      wx.hideLoading({
-      
-      })
+      let blogComment=res.result.comment.data
+      for(let i=0;i<blogComment.length;i++){
+        blogComment[i].date=formatTime(blogComment[i].date)
+      }
+      wx.hideLoading()
       this.setData({
-        blogDetail:res.result.blogDetail[0],
-        blogComment:res.result.comment.data
+        blogComment,
+        blogDetail:res.result.blogDetail[0]
       })
     })
   },
