@@ -1,6 +1,8 @@
 // components/blog-ctrl/blog-ctrl.js
+wx.cloud.init()
 let userInfo={}
 const db=wx.cloud.database()
+
 Component({
   /**
    * 组件的属性列表

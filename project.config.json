@@ -100,6 +100,11 @@
           "pathName": "pages/blog-edit/blog-edit",
           "query": "avatarUrl=https://thirdwx.qlogo.cn/mmopen/vi_32/T01Y3UEJu4RLyz1pulkwhEiciaYcojcHUdHMaF7zNcUlqNCO4p0DopKOpzzyhzD5jPpEUQ0agz2qnpfzjEEicVGCQ/132& nickName=111",
           "scene": null
+        },
+        {
+          "name": "pages/profile/profile",
+          "pathName": "pages/profile/profile",
+          "scene": null
         }
       ]
     }

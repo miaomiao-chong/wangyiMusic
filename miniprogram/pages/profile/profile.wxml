@@ -1,2 +1,30 @@
-<!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<view class="header">
+  <view class="avatarUrl">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data class="nickName" type="userNickName"></open-data>
+</view>
+
+<view class="nav">
+  <navigator hover-class="true" url="../profile-playHistory/profile-playHistory">
+    <view class="item">
+      <i class="iconfont icon-bofangzhong"></i>
+      <view class="content">播放历史</view>
+      <i class="iconfont icon-xiangyou"></i>
+    </view>
+  </navigator>
+  <navigator hover-class="true" url="../profile-myBlog/profile-myBlog">
+    <view class="item">
+      <i class="iconfont icon-shoucang1"></i>
+      <view class="content">我的博客</view>
+      <i class="iconfont icon-xiangyou"></i>
+    </view>
+  </navigator>
+  <view class="erweima">
+    <view class="item">
+      <i class="iconfont icon-erweima"></i>
+      <view class="content">二维码</view>
+      <i class="iconfont icon-xiangyou"></i>
+    </view>
+  </view>
+</view>
