@@ -1,2 +1,5 @@
-<!--miniprogram/pages/profile-myBlog/profile-myBlog.wxml-->
-<text>miniprogram/pages/profile-myBlog/profile-myBlog.wxml</text>
+<view wx:for="{{bloglist}}">
+  <s-blog-card blog="{{item}}" bindtap="goToComment" data-blogId="{{item._id}}"></s-blog-card>
+
+  <s-blog-ctrl blogId="{{item._id}}"></s-blog-ctrl>
+</view>
