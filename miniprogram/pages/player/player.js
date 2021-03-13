@@ -1,6 +1,7 @@
 // miniprogram/pages/player/player.js
+const app=getApp()
 //缓存取出来的列表
-let musicInfo={}
+let musicInfo=[]
 //正在播放音乐的下标 也不需要在界面显示 全局的 下一首上一首都要用到它
 let nowPlayingIndex=0
 //有的歌曲拿不到歌曲
@@ -119,6 +120,7 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.musicInfo.name,
     })
+    this.getMusic()
   },
   togglePlaying() {
     // 正在播放
@@ -154,6 +156,23 @@ Page({
   },
   timeUpdate(event){
     this.selectComponent('.lyric').update(event.detail.currentTime)
+  },
+  getMusic(){
+    let openid=app.globalData.openid
+ 
+    let music=musicInfo[nowPlayingIndex]
+    let musicHistoryList=wx.getStorageSync(openid)
+    //判断是否有重复，有的话就删掉
+    for(let i=0,len=musicHistoryList.length;i<len;i++){
+      if(musicHistoryList[i].id===music.id){
+        musicHistoryList.splice(i,1)
+        break
+        // console.log("zhixing");
+      }
+    }
+    //添加最新播放的歌曲到最前面
+    musicHistoryList.unshift(music)
+    wx.setStorageSync(openid, musicHistoryList)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

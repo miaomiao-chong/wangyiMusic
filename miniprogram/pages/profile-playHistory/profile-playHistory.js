@@ -1,18 +1,28 @@
 // miniprogram/pages/profile-playHistory/profile-playHistory.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    musiclist:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMusicList()
+  },
+  getMusicList(){
+    let openid=app.globalData.openid
+    let musiclist=wx.getStorageSync(openid)
+    console.log(musiclist);
+    this.setData({
+      musiclist
+    })
+    wx.setStorageSync('musiclist', musiclist)
   },
 
   /**
