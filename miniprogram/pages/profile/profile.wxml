@@ -21,7 +21,7 @@
     </view>
   </navigator>
   <view class="erweima">
-    <view class="item">
+    <view class="item" bindtap="onTapQrCode">
       <i class="iconfont icon-erweima"></i>
       <view class="content">二维码</view>
       <i class="iconfont icon-xiangyou"></i>
